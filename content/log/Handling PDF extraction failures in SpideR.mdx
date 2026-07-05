@@ -1,0 +1,29 @@
+---
+title: "Handling PDF extraction failures in SpideR"
+date: "2026-06-15"
+tags: ["Backend", "Search"]
+summary: "Fixed document indexing failures caused by treating PDFs as plain text during search indexing."
+---
+
+Search indexing failed whenever binary PDF files were processed using a plain text reader.
+
+## The investigation
+
+- Indexing crashed with UnicodeDecodeError on certain documents.
+- The extraction pipeline lacked format-specific handlers.
+
+## The fix
+
+```diff
+- open(file).read()
++ PdfReader()
++ python-docx
++ Text fallback
+```
+
+Each supported document type now follows its own extraction pipeline.
+
+## Why it mattered
+
+- Indexing became much more reliable.
+- Users can search PDFs, DOCX files, and text documents seamlessly.

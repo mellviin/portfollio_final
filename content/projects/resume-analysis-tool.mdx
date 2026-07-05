@@ -1,0 +1,310 @@
+---
+title: "HireScope — AI-Powered Resume & Job Intelligence Platform"
+summary: "An AI-powered platform that analyzes resumes against job descriptions, calculates ATS compatibility, identifies skill gaps, and generates actionable recommendations using NLP and machine learning."
+date: "2026-06-30"
+stack:
+  - React
+  - TypeScript
+  - FastAPI
+  - PostgreSQL
+  - Tailwind CSS
+  - spaCy
+  - scikit-learn
+  - KeyBERT
+  - FlashText
+  - Docker
+  - Render
+  - Vercel
+links:
+  demo: "https://your-demo.vercel.app"
+  github: "https://github.com/mellviin/hireScope"
+---
+
+# Overview
+
+HireScope is a full-stack AI-powered Resume & Job Description Intelligence Platform built to help job seekers optimize their resumes before applying for jobs.
+
+The application analyzes resumes against job descriptions, calculates ATS compatibility, identifies missing skills, and provides actionable recommendations to improve a candidate's chances of passing Applicant Tracking Systems (ATS).
+
+Unlike conventional resume scanners that rely solely on keyword matching, HireScope combines rule-based Natural Language Processing (NLP) with machine learning to deliver explainable resume analysis and transparent scoring.
+
+---
+
+# The Problem
+
+Many qualified candidates never reach the interview stage because their resumes fail automated ATS screening.
+
+Existing ATS tools often have several shortcomings:
+
+- Over-reliance on exact keyword matching
+- Little transparency behind ATS scores
+- Generic improvement suggestions
+- Poor handling of different resume formats
+- No contextual understanding of related skills
+
+HireScope was developed to solve these problems by providing detailed resume analysis rather than a simple numerical score.
+
+---
+
+# Objectives
+
+The project was designed with the following objectives:
+
+- Parse PDF and DOCX resumes
+- Analyze job descriptions
+- Extract structured candidate information
+- Calculate ATS compatibility
+- Detect missing and underrepresented skills
+- Recommend resume improvements
+- Visualize results through an interactive dashboard
+- Support fast keyboard-driven navigation
+
+---
+
+# System Architecture
+
+```text
+                   React + TypeScript
+                          │
+                          ▼
+                  FastAPI Backend
+                          │
+        ┌─────────────────┼─────────────────┐
+        ▼                 ▼                 ▼
+ Resume Parser      JD Analyzer      Authentication
+        │                 │
+        ▼                 ▼
+   NLP Processing   Skill Extraction
+        │                 │
+        └──────────┬──────┘
+                   ▼
+          ATS Scoring Engine
+                   │
+                   ▼
+      Recommendation Generator
+                   │
+                   ▼
+          PostgreSQL (Neon)
+```
+
+---
+
+# Core Features
+
+## Resume Parsing
+
+HireScope extracts structured information from uploaded resumes including:
+
+- Technical Skills
+- Experience
+- Education
+- Certifications
+- Projects
+- Contact Information
+
+Supported formats:
+
+- PDF
+- DOCX
+
+The parsing pipeline normalizes extracted text before processing it through NLP components to improve extraction consistency across different resume templates.
+
+---
+
+## Job Description Analysis
+
+Job descriptions are analyzed to identify:
+
+- Required Skills
+- Preferred Technologies
+- Experience Requirements
+- Educational Qualifications
+- Domain Keywords
+
+These extracted requirements form the baseline used for ATS evaluation.
+
+---
+
+## ATS Compatibility Scoring
+
+Rather than depending solely on exact keyword matches, HireScope evaluates resumes using multiple weighted criteria.
+
+The scoring engine considers:
+
+- Required Skills
+- Preferred Skills
+- Experience
+- Projects
+- Education
+
+This produces a transparent ATS compatibility score that explains how each section contributes to the final evaluation.
+
+---
+
+## Skill Gap Analysis
+
+The platform identifies missing and underrepresented skills by comparing resume content against job requirements.
+
+Skills are categorized as:
+
+- Matched
+- Partially Matched
+- Underused
+- Missing
+
+Each missing skill is accompanied by recommendations that help candidates improve their resumes.
+
+---
+
+## Resume Optimization
+
+HireScope generates practical suggestions such as:
+
+- Add missing technologies
+- Improve keyword coverage
+- Strengthen project descriptions
+- Better align experience with the target role
+- Improve ATS readability
+
+The goal is to help candidates create stronger resumes instead of simply highlighting weaknesses.
+
+---
+
+## Interactive Dashboard
+
+The dashboard provides an intuitive visualization of resume analysis, including:
+
+- ATS Compatibility Score
+- Skill Match Percentage
+- Missing Skills
+- Resume Summary
+- Improvement Recommendations
+- Job Description Insights
+
+The interface updates dynamically after each analysis, allowing users to quickly identify areas for improvement.
+
+---
+
+## Command Palette & Keyboard Shortcuts
+
+To improve navigation and productivity, HireScope includes a keyboard-driven command palette inspired by modern developer tools.
+
+Users can quickly navigate between application sections without relying solely on mouse interactions.
+
+### Features
+
+- Instant command search
+- Keyboard navigation
+- Mouse support
+- Fast filtering
+- Accessible interactions
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Alt + Shift + R` | Open the Resume Analysis workspace |
+| `↑ / ↓` | Navigate available commands |
+| `Enter` | Execute selected command |
+| `Esc` | Close the command palette |
+
+This interaction significantly improves navigation speed while providing a familiar experience for power users.
+
+---
+
+# Technical Challenges
+
+## Parsing Real-World Resumes
+
+Different resume templates generated inconsistent PDF text extraction.
+
+Additional preprocessing and normalization were introduced to improve extraction accuracy before NLP analysis.
+
+---
+
+## Improving ATS Accuracy
+
+Simple keyword matching frequently produced misleading scores.
+
+The ATS engine was enhanced using contextual skill grouping and rule-based NLP so related technologies contribute to the overall score instead of relying exclusively on exact matches.
+
+---
+
+## Deployment Challenges
+
+Deploying the application introduced several production challenges including:
+
+- Cross-Origin Resource Sharing (CORS)
+- Environment variable management
+- PostgreSQL connectivity
+- API communication between Vercel and Render
+
+These issues were resolved through environment-specific configuration and migration from SQLite to Neon PostgreSQL.
+
+---
+
+# Performance Optimizations
+
+Several optimizations were introduced during development.
+
+- Optimized resume parsing pipeline
+- Reduced unnecessary frontend requests
+- Improved API response times
+- Cached frequently accessed data
+- Optimized PostgreSQL queries
+- Reduced frontend bundle size
+- Improved loading performance
+
+These improvements resulted in faster resume analysis and a smoother user experience.
+
+---
+
+# Tech Stack
+
+## Frontend
+
+- React
+- TypeScript
+- Tailwind CSS
+
+## Backend
+
+- FastAPI
+- Python
+- REST APIs
+
+## Artificial Intelligence
+
+- spaCy
+- scikit-learn
+- KeyBERT
+- FlashText
+
+## Database
+
+- PostgreSQL (Neon)
+
+## Deployment
+
+- Docker
+- Render
+- Vercel
+
+---
+
+# Lessons Learned
+
+HireScope provided practical experience building a complete AI-powered SaaS application from design to deployment.
+
+Some of the most valuable lessons included:
+
+- Building scalable full-stack architectures
+- Designing explainable ATS scoring systems
+- Resume parsing using NLP
+- Integrating machine learning into production workflows
+- Optimizing database performance
+- Building responsive React applications
+- Deploying cloud-native applications using Render and Vercel
+- Debugging real-world production issues such as CORS, environment configuration, and database migrations
+
+The project reinforced the importance of combining traditional software engineering principles with AI techniques to create applications that provide meaningful, explainable insights rather than opaque numerical results.

@@ -1,0 +1,29 @@
+---
+title: "Deploying SpideR inside Docker"
+date: "2026-06-18"
+tags: ["Backend", "Deployment"]
+summary: "Containerized the search engine to ensure identical indexing behavior across development and deployment environments."
+---
+
+Running the crawler across different systems exposed inconsistent dependencies and environment configurations.
+
+## The investigation
+
+- The application behaved differently between local machines.
+- Python packages and runtime versions varied across environments.
+
+## The fix
+
+```diff
+- Local machine setup
++ Dockerfile
++ requirements.txt
++ Containerized runtime
+```
+
+Every deployment now runs inside the same reproducible environment.
+
+## Why it mattered
+
+- Eliminated environment-specific bugs.
+- Simplified onboarding and deployment.

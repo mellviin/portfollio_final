@@ -1,0 +1,28 @@
+---
+title: "Improving ATS keyword scoring"
+date: "2026-06-10"
+tags: ["AI", "Backend"]
+summary: "Reworked keyword scoring to recognize contextual skill matches instead of relying solely on exact phrases."
+---
+
+Exact keyword matching produced misleading ATS scores for resumes using equivalent terminology.
+
+## The investigation
+
+- Semantically similar skills were treated as missing.
+- Recruiter expectations didn't always align with literal keyword matching.
+
+## The fix
+
+```diff
+- Exact keyword comparison
++ Skill normalization
++ Context-aware matching
+```
+
+Combined rule-based parsing with categorized skill groups before calculating ATS scores.
+
+## Why it mattered
+
+- More accurate resume evaluations.
+- Better recommendations for improving candidate profiles.

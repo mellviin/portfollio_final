@@ -1,0 +1,29 @@
+---
+title: "Resolving React dependency conflicts"
+date: "2026-06-20"
+tags: ["Frontend", "Build"]
+summary: "A dependency mismatch prevented production builds after introducing new UI components."
+---
+
+Adding additional packages unexpectedly caused build failures despite everything working during development.
+
+## The investigation
+
+- npm reported conflicting peer dependency versions.
+- The production build was stricter than the development server.
+
+## The fix
+
+```diff
+- Mixed package versions
++ Aligned React
++ Updated TypeScript
++ Clean dependency tree
+```
+
+Dependencies were upgraded together to maintain compatibility.
+
+## Why it mattered
+
+- Production builds became deterministic.
+- Future package upgrades are easier to manage.

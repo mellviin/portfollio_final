@@ -1,0 +1,28 @@
+---
+title: "Incremental indexing for SpideR"
+date: "2026-06-17"
+tags: ["Backend", "Performance"]
+summary: "Replaced full index rebuilds with filesystem-based incremental indexing to dramatically reduce indexing time."
+---
+
+Initially every file modification triggered a complete rebuild of the search index.
+
+## The investigation
+
+- Small edits caused unnecessary processing of hundreds of unchanged documents.
+- Profiling showed indexing spent most of its time reprocessing existing files.
+
+## The fix
+
+```diff
+- Rebuild entire index
++ Watch filesystem events
++ Re-index only modified files
+```
+
+A watchdog-based file observer now tracks file changes and updates only affected entries.
+
+## Why it mattered
+
+- Indexing became nearly instantaneous for small edits.
+- Large document collections remain responsive during development.

@@ -1,0 +1,27 @@
+---
+title: "Migrating HireScope from SQLite to PostgreSQL"
+date: "2026-06-21"
+tags: ["Backend", "Database"]
+summary: "Moved HireScope from SQLite to Neon PostgreSQL to support cloud deployment, concurrent users, and persistent production data."
+---
+
+As HireScope grew beyond local development, SQLite became a limitation. Production deployment required a managed database that could handle multiple users and survive container restarts.
+
+## The investigation
+
+- API requests worked locally but data disappeared whenever the deployment restarted.
+- The backend still relied on a local SQLite file that wasn't suitable for a stateless hosting environment.
+
+## The fix
+
+```diff
+- sqlite:///./hirescope.db
++ postgresql://<neon-connection-string>
+```
+
+Updated SQLAlchemy configuration, database migrations, and environment variables before deploying to Render.
+
+## Why it mattered
+
+- User data now persists across deployments.
+- The backend is ready for multiple concurrent users and production scaling.

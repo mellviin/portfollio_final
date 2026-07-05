@@ -1,0 +1,299 @@
+---
+title: "SpideR — Distributed Web Search Engine"
+date: "2026"
+summary: "A Google-inspired search engine built from scratch: crawler, index, PageRank, and a semantic search layer."
+tags: ["Backend", "ML", "Systems"]
+stack: ["FastAPI", "React", "TypeScript", "Elasticsearch", "PostgreSQL", "Redis", "Celery", "Sentence Transformers", "FAISS"]
+links:
+  github: "https://github.com/mellviin/SpideR_v3.0.0"
+---
+
+
+# SpideR — Distributed Semantic Search Engine
+
+## Overview
+
+SpideR is a Google-inspired distributed search engine designed to crawl, index, and retrieve information from both local documents and web sources. The project combines traditional information retrieval techniques with modern semantic search to deliver fast, relevant, and explainable search results.
+
+Unlike simple keyword-based search systems, SpideR supports PageRank-based ranking, semantic vector search, fuzzy matching, and document snippet generation, enabling users to find relevant information even when exact keywords are absent.
+
+The system is built with a modular architecture that separates crawling, indexing, ranking, and query processing into independent components, making it easier to scale and extend.
+
+---
+
+## The Problem
+
+Searching through large collections of mixed document formats is surprisingly difficult.
+
+Traditional keyword search suffers from several limitations:
+
+- Exact keyword matching misses semantically similar documents.
+- PDF, DOCX, and TXT files require different parsing strategies.
+- Rebuilding the entire index after every file change wastes significant processing time.
+- Misspelled queries often produce no results.
+- Large collections require efficient ranking rather than simple text matching.
+
+The goal was to build a search engine capable of handling heterogeneous data sources while providing results comparable to modern search platforms.
+
+---
+
+## Objectives
+
+- Crawl websites automatically
+- Index local documents recursively
+- Support PDF, DOCX, TXT, and HTML
+- Build an inverted index for fast retrieval
+- Implement semantic vector search
+- Rank documents using PageRank
+- Support fuzzy and multi-keyword search
+- Display highlighted snippets
+- Expose search functionality through REST APIs
+
+---
+
+## System Architecture
+
+```text
+                 User Search
+                      │
+                      ▼
+              React Frontend
+                      │
+                      ▼
+               Flask REST API
+                      │
+      ┌───────────────┼────────────────┐
+      ▼               ▼                ▼
+ Query Parser   Semantic Search   Keyword Search
+                      │                │
+                 Sentence        Inverted Index
+               Transformers           │
+                      │                │
+                      ▼                ▼
+                   FAISS         PageRank Ranking
+                      │
+                      ▼
+               Ranked Search Results
+                      │
+                      ▼
+          Snippet Generation & Highlighting
+```
+
+---
+
+## Key Features
+
+### Distributed Web Crawling
+
+A crawler continuously discovers pages starting from seed URLs.
+
+Features include:
+
+- URL normalization
+- Duplicate detection
+- Recursive crawling
+- Configurable crawl depth
+- HTML parsing
+- Metadata extraction
+
+---
+
+### Intelligent Document Parsing
+
+The indexing pipeline automatically detects document types and extracts text using format-specific parsers.
+
+Supported formats:
+
+- PDF
+- DOCX
+- TXT
+- HTML
+
+This allows users to search across multiple document formats without manual preprocessing.
+
+---
+
+### Inverted Index
+
+SpideR builds an inverted index that maps every term to the documents containing it.
+
+Benefits include:
+
+- Fast keyword lookup
+- Efficient multi-keyword search
+- Reduced search complexity
+- Scalable indexing
+
+---
+
+### Semantic Search
+
+Keyword matching is complemented with semantic similarity.
+
+Sentence Transformers generate dense embeddings for every indexed document.
+
+User queries are converted into embeddings and searched using FAISS nearest-neighbor indexing.
+
+Advantages:
+
+- Finds conceptually related documents
+- Handles synonyms
+- Improves recall
+- Better natural language search
+
+---
+
+### PageRank-based Ranking
+
+Search results are ranked using PageRank-inspired scoring combined with keyword relevance.
+
+The ranking considers:
+
+- Link authority
+- Keyword frequency
+- Semantic similarity
+- Document relevance
+
+This produces more meaningful search ordering than simple keyword counting.
+
+---
+
+### Fuzzy Search
+
+Users frequently make spelling mistakes.
+
+To improve usability, SpideR supports fuzzy matching using edit-distance algorithms.
+
+Example:
+
+```
+machne learnng
+```
+
+still returns
+
+```
+Machine Learning
+```
+
+related documents.
+
+---
+
+### Snippet Highlighting
+
+Instead of returning only filenames, the engine extracts the most relevant passage from each document and highlights matching terms.
+
+Users immediately understand why a document appears in the search results.
+
+---
+
+## Technical Challenges
+
+### Incremental Indexing
+
+Initially every file modification triggered a complete rebuild of the search index.
+
+This became increasingly inefficient as the dataset grew.
+
+The indexing pipeline was redesigned to detect file changes and update only modified documents.
+
+Result:
+
+- Faster indexing
+- Lower CPU usage
+- Better scalability
+
+---
+
+### Parsing Mixed File Formats
+
+PDF, DOCX, TXT, and HTML all require different extraction methods.
+
+Binary PDFs initially caused decoding errors because they were treated as plain text.
+
+A dedicated extraction pipeline was implemented for every supported format.
+
+---
+
+### Ranking Search Results
+
+Keyword frequency alone produced poor rankings.
+
+Combining:
+
+- TF-style keyword relevance
+- PageRank authority
+- Semantic similarity
+
+significantly improved result quality.
+
+---
+
+## Performance Optimizations
+
+Implemented several optimizations throughout the search pipeline.
+
+- Incremental indexing
+- Cached document embeddings
+- Efficient FAISS vector search
+- Recursive filesystem scanning
+- Duplicate detection
+- Optimized snippet generation
+
+These improvements reduced indexing overhead while maintaining responsive query performance.
+
+---
+
+## Technologies Used
+
+### Frontend
+
+- React
+- TypeScript
+- Tailwind CSS
+
+### Backend
+
+- Python
+- Flask
+- REST API
+
+### Search
+
+- Sentence Transformers
+- FAISS
+- PageRank
+- Inverted Index
+- Fuzzy Matching
+
+### Document Processing
+
+- BeautifulSoup
+- PyPDF
+- python-docx
+
+### Infrastructure
+
+- Docker
+- Git
+- GitHub
+
+---
+
+## What I Learned
+
+Building SpideR deepened my understanding of information retrieval systems beyond traditional CRUD applications.
+
+Key takeaways included:
+
+- Designing scalable indexing pipelines
+- Efficient search data structures
+- Ranking algorithms
+- Semantic vector search
+- Document parsing challenges
+- Search relevance optimization
+- Backend performance tuning
+- API design for search systems
+
+The project also reinforced the importance of combining classical search techniques with modern NLP models to build practical, production-ready retrieval systems.

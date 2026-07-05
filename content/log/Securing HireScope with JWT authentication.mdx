@@ -1,0 +1,28 @@
+---
+title: "Securing HireScope with JWT authentication"
+date: "2026-06-12"
+tags: ["Backend", "Security"]
+summary: "Implemented token-based authentication to protect resume analysis and dashboard APIs."
+---
+
+Initially every endpoint was publicly accessible during development.
+
+## The investigation
+
+- Authentication was missing from protected routes.
+- API endpoints could be called without verification.
+
+## The fix
+
+```diff
+- Public endpoints
++ JWT authentication
++ Protected routes
+```
+
+Middleware now validates access tokens before serving sensitive requests.
+
+## Why it mattered
+
+- Resume data is protected.
+- The backend is closer to production-ready security practices.

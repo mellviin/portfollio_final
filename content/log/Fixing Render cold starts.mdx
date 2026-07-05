@@ -1,0 +1,28 @@
+---
+title: "Fixing Render cold starts"
+date: "2026-06-28"
+tags: ["Backend", "Deployment"]
+summary: "Optimized FastAPI startup to reduce the impact of free-tier cold starts on the first user request."
+---
+
+Users occasionally experienced long response times despite the API itself being fast.
+
+## The investigation
+
+- Only the first request after inactivity was slow.
+- Render's free-tier instances entered a sleep state between requests.
+
+## The fix
+
+```diff
+- Heavy startup initialization
++ Lazy initialization
++ Health check endpoint
+```
+
+Startup work was deferred until needed while lightweight health checks kept deployment monitoring simple.
+
+## Why it mattered
+
+- Faster perceived performance.
+- Improved production responsiveness without changing application logic.

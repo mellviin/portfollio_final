@@ -1,0 +1,28 @@
+---
+title: "Optimizing Three.js asset loading"
+date: "2026-05-27"
+tags: ["Frontend", "Performance"]
+summary: "Reduced startup time for VirtuAuth by optimizing FBX model loading and delaying non-essential animations."
+---
+
+The interactive login experience looked great but took too long to become responsive.
+
+## The investigation
+
+- Large FBX assets blocked initial rendering.
+- Several animations started before the interface became interactive.
+
+## The fix
+
+```diff
+- Load everything immediately
++ Lazy asset loading
++ Deferred animations
+```
+
+Critical assets load first while decorative animations initialize afterward.
+
+## Why it mattered
+
+- Faster first interaction.
+- Better experience on slower devices.

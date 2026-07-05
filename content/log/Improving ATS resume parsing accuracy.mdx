@@ -1,0 +1,29 @@
+---
+title: "Improving ATS resume parsing accuracy"
+date: "2026-06-24"
+tags: ["Backend", "AI"]
+summary: "Resume parsing initially failed on PDFs with inconsistent formatting, requiring a more resilient preprocessing pipeline."
+---
+
+Different PDF generators produced wildly different text layouts, causing missing skills and incomplete resume analysis.
+
+## The investigation
+
+- Some resumes returned almost empty skill lists despite containing all required information.
+- Testing multiple PDF formats revealed inconsistent whitespace, line breaks, and text ordering.
+
+## The fix
+
+```diff
+- Raw extracted PDF text
++ Cleaned text normalization
++ Section detection
++ Improved skill extraction
+```
+
+Additional preprocessing significantly improved extraction consistency before NLP analysis.
+
+## Why it mattered
+
+- ATS scores became far more reliable.
+- Resume analysis now works across a much wider variety of PDF formats.
