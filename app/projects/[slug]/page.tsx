@@ -38,7 +38,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Embedded demo</p>
         <div className="mt-4 min-h-72 rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-bg)] p-8 text-sm text-[var(--color-text-muted)]">
           {/* TODO: Replace with screenshot or embedded demo embed. */}
-          Placeholder for a real demo or screenshot.
+          No screenshot available.
         </div>
       </section>
 

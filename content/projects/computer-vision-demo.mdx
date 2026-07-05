@@ -1,9 +1,137 @@
 ---
-title: "Air Paint — Gesture-Controlled Drawing App"
-date: "2025"
-summary: "Draw in the air — real-time hand-tracking turns your webcam into a paintbrush."
-tags: ["ML", "Frontend"]
-stack: ["OpenCV", "MediaPipe", "Python"]
+title: "Air Paint — Gesture-Based Virtual Drawing"
+date: "2024"
+summary: "A real-time computer vision application that transforms hand gestures into a virtual drawing canvas using OpenCV and MediaPipe."
+tags: ["Computer Vision", "Machine Learning", "Python", "OpenCV"]
+stack: ["Python", "OpenCV", "MediaPipe", "NumPy"]
+links:
+    github: "https://github.com/mellviin/Air-Paint-PYTHON-"
 ---
-A real-time gesture-controlled drawing application using OpenCV and MediaPipe hand-landmark 
-detection for webcam-based finger tracking — no mouse, no stylus, just your hand.
+
+## Overview
+
+Air Paint explores a more natural way of interacting with computers by replacing traditional input devices with hand gestures. Using real-time computer vision, the application tracks a user's fingertip through a webcam and converts its movement into digital brush strokes on a virtual canvas.
+
+The project demonstrates how gesture recognition can create intuitive, touch-free interfaces for creative applications, education, and interactive systems.
+
+---
+
+## The Challenge
+
+Most digital drawing applications rely on physical input devices such as a mouse, stylus, or touchscreen. While effective, they introduce a physical barrier between the user and the digital canvas.
+
+The challenge was to answer a simple question:
+
+> **Can free-hand gestures alone become a reliable and intuitive drawing interface?**
+
+The objective was to build a real-time system capable of accurately detecting hand landmarks, tracking fingertip movement, and translating those movements into smooth digital drawings with minimal latency.
+
+---
+
+## Design Approach
+
+The application was designed around three principles:
+
+- **Natural Interaction** — Drawing should feel as close as possible to sketching in the air.
+- **Real-Time Feedback** — Every hand movement should immediately appear on the virtual canvas.
+- **Lightweight Processing** — Maintain smooth performance using efficient computer vision techniques.
+
+Instead of relying on external sensors or specialized hardware, the application uses only a standard webcam.
+
+---
+
+## Experience Flow
+
+```text
+Start Webcam
+      ↓
+Detect Hand
+      ↓
+Track Fingertip Landmark
+      ↓
+Recognize Gesture
+      ↓
+Map Coordinates
+      ↓
+Draw on Virtual Canvas
+      ↓
+Switch Colors / Clear Canvas
+      ↓
+Continue Drawing
+```
+
+---
+
+## Technical Implementation
+
+The application combines computer vision and machine learning to perform real-time hand tracking and gesture-based interaction.
+
+Core implementation includes:
+
+- Real-time webcam video capture
+- Hand landmark detection using MediaPipe
+- Fingertip tracking for drawing
+- Gesture-based color selection
+- Virtual drawing canvas
+- Multiple brush colors
+- Canvas clearing functionality
+- Frame-by-frame rendering with OpenCV
+
+The entire drawing experience is processed locally, requiring no external APIs or cloud services.
+
+---
+
+## Engineering Challenges
+
+### Real-Time Hand Tracking
+
+Maintaining smooth fingertip tracking while processing every video frame required balancing detection accuracy with processing speed.
+
+### Gesture Stability
+
+Natural hand movement introduces jitter and small tracking errors. The application filters landmark positions to produce smoother brush strokes while preserving responsiveness.
+
+### Coordinate Mapping
+
+Hand landmark coordinates from the camera feed needed to be accurately mapped onto the drawing canvas while accounting for mirrored webcam input.
+
+### Low Latency Rendering
+
+Drawing operations had to occur fast enough that users perceived the brush as following their finger naturally, creating a fluid interaction experience.
+
+---
+
+## Key Features
+
+- Real-time hand landmark detection
+- Touch-free virtual drawing
+- Fingertip-based brush control
+- Multiple drawing colors
+- Gesture-controlled interface
+- Canvas clearing
+- Webcam-based interaction
+- Low-latency rendering
+- Cross-platform Python implementation
+
+---
+
+## What I Learned
+
+Building Air Paint strengthened my understanding of:
+
+- Computer vision fundamentals
+- Real-time image processing
+- Hand landmark detection
+- Gesture recognition
+- Coordinate transformations
+- Human-computer interaction
+- OpenCV image pipelines
+- Performance optimization for live video processing
+
+---
+
+## Outcome
+
+Air Paint demonstrates how computer vision can replace conventional input devices with natural human gestures. By combining OpenCV and MediaPipe, the project creates an intuitive drawing experience that showcases practical applications of real-time hand tracking and gesture recognition.
+
+Beyond digital drawing, the techniques explored in this project can be extended to touchless user interfaces, interactive presentations, smart classrooms, and accessibility-focused applications.

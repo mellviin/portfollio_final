@@ -28,44 +28,48 @@ const getGithubStats = unstable_cache(
 const skillGroups = [
   {
     category: "Languages",
-    items: ["Java", "Python", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3", "C", "C++"],
+    items: ["Java", "Python", "JavaScript (ES6+)", "TypeScript", "SQL", "HTML5", "CSS3", "C", "C++"],
   },
   {
     category: "Frontend",
-    items: ["React", "Redux", "Tailwind CSS", "Bootstrap", "Three.js"],
+    items: ["React", "Redux", "Tailwind CSS", "Bootstrap", "Three.js", "WebGL", "Responsive Web Design"],
   },
   {
     category: "Backend & APIs",
-    items: ["FastAPI", "Flask", "Spring Boot", "REST API Design", "Authentication"],
+    items: ["FastAPI", "Flask", "Django", "Spring Boot", "Node.js", "Express.js", "REST API Design", "Authentication", "Microservices"],
   },
   {
     category: "Databases",
-    items: ["PostgreSQL", "MySQL", "Relational Database Design"],
+    items: ["PostgreSQL", "MySQL", "SQLite", "MongoDB", "Relational Database Design"],
   },
   {
-    category: "ML / AI",
+    category: "AI / Machine Learning",
     items: [
+      "Machine Learning",
+      "Natural Language Processing",
+      "Computer Vision",
       "Scikit-learn",
       "Pandas",
       "NumPy",
       "Matplotlib",
-      "NLTK",
+      "Hugging Face Transformers",
+      "Sentence Transformers",
       "spaCy",
       "KeyBERT",
+      "FAISS",
+      "NLTK",
       "OpenCV",
       "MediaPipe",
       "Librosa",
-      "Sentence Transformers",
-      "FAISS",
     ],
   },
   {
     category: "Cloud, DevOps & Tools",
-    items: ["Docker", "Kubernetes", "Git", "GitHub", "Postman", "VS Code", "Vercel", "Render", "Neon", "Android Studio"],
+    items: ["Docker", "Docker Compose", "Kubernetes", "Git", "GitHub", "GitHub Actions", "Postman", "VS Code", "Vercel", "Render", "Neon", "Android Studio"],
   },
   {
     category: "Engineering Practices",
-    items: ["OOP", "Data Structures & Algorithms", "Software Architecture", "Distributed Systems", "Agile/Scrum", "SDLC", "Unit Testing"],
+    items: ["Object-Oriented Programming (OOP)", "Data Structures & Algorithms", "Software Architecture", "Distributed Systems", "RESTful Architecture", "Agile / Scrum", "SDLC", "Unit Testing"],
   },
 ];
 

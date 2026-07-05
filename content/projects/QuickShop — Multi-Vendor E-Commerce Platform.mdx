@@ -1,0 +1,162 @@
+---
+title: "QuickShop — Multi-Vendor E-Commerce Platform"
+date: "2025"
+summary: "A full-stack Django marketplace that enables consumers and sellers to manage products, orders, wishlists, and simulated payments through a role-based architecture."
+tags: ["Full Stack", "E-Commerce", "Backend", "Web Development"]
+stack: ["Python", "Django", "SQLite", "HTML", "CSS", "JavaScript"]
+links:
+    github: "https://github.com/mellviin/QuickShop-Multi-Vendor-E-Commerce-Platform"
+---
+
+## Overview
+
+QuickShop is a role-based e-commerce platform designed to simulate the core functionality of an online marketplace. The application supports two user roles—consumers and sellers—allowing customers to browse products, manage shopping carts, place orders, and track purchases, while sellers can manage inventory and process incoming orders through a dedicated dashboard.
+
+The project focuses on implementing the business logic behind an online shopping platform, including authentication, inventory management, order processing, and user role authorization.
+
+---
+
+## The Challenge
+
+Building an online marketplace involves much more than displaying products. Different users require different permissions, workflows, and interfaces while sharing the same application.
+
+The challenge was to answer:
+
+> **How can a single application efficiently support multiple user roles while maintaining secure access control and a seamless shopping experience?**
+
+The objective was to design a modular Django application capable of handling authentication, inventory management, order workflows, and seller operations within a unified platform.
+
+---
+
+## Design Approach
+
+The project was designed around four principles:
+
+- **Role-Based Access** — Separate consumer and seller experiences with appropriate permissions.
+- **Modular Architecture** — Organize features into reusable Django applications.
+- **Complete Shopping Workflow** — Cover the entire customer journey from product discovery to order confirmation.
+- **Maintainable Backend Logic** — Keep authentication, products, orders, and payments loosely coupled.
+
+---
+
+## Application Workflow
+
+```text
+User Registration
+        ↓
+Role Selection
+        ↓
+Consumer / Seller Dashboard
+        ↓
+Browse Products
+        ↓
+Cart & Wishlist
+        ↓
+Checkout
+        ↓
+Payment Processing
+        ↓
+Order Confirmation
+        ↓
+Order History
+```
+
+---
+
+## System Architecture
+
+```text
+                Django Application
+                      │
+     ┌────────────────┼────────────────┐
+     │                │                │
+ Authentication   Product Catalog   Order System
+     │                │                │
+     └──────────┬─────┴─────┬──────────┘
+                │           │
+          Seller Portal   Consumer Portal
+                │
+           SQLite Database
+```
+
+---
+
+## Technical Implementation
+
+The application follows Django's modular app architecture, separating business functionality into independent components.
+
+Core implementation includes:
+
+- Role-based authentication using Django's built-in authentication system
+- Consumer and seller account management
+- Product catalog with image uploads
+- Shopping cart and wishlist functionality
+- Checkout and shipping workflow
+- Simulated payment processing
+- Order management and status tracking
+- Seller dashboard for inventory management
+- Email notifications for order confirmations
+- Django Admin and custom administrative dashboard
+
+---
+
+## Engineering Challenges
+
+### Role-Based Authorization
+
+The application supports two distinct user types with different permissions and workflows while sharing the same authentication system.
+
+### Inventory Management
+
+Sellers can create, update, and delete products while inventory changes automatically affect customer purchasing options.
+
+### Checkout Workflow
+
+The checkout process spans multiple steps—including cart validation, shipping information, payment simulation, and order confirmation—requiring careful session and state management.
+
+### Order Lifecycle
+
+Orders transition through multiple states, allowing sellers to update processing status while customers track purchase history.
+
+---
+
+## Key Features
+
+- Consumer and seller authentication
+- Role-based authorization
+- Product catalog management
+- Shopping cart
+- Wishlist
+- Product image uploads
+- Checkout workflow
+- Simulated payment gateway
+- Order history
+- Seller dashboard
+- Inventory management
+- Email notifications
+- Django Admin integration
+
+---
+
+## What I Learned
+
+Developing QuickShop strengthened my understanding of:
+
+- Django application architecture
+- Authentication and authorization
+- Session management
+- CRUD application design
+- Relational database modeling
+- E-commerce workflows
+- File upload handling
+- Business logic implementation
+- Order processing systems
+- MVC/MVT application development
+
+---
+
+## Outcome
+
+QuickShop demonstrates the core architecture behind modern online marketplaces by combining role-based authentication, inventory management, shopping workflows, and order processing into a single full-stack application. The project provided practical experience in designing scalable backend logic while implementing real-world e-commerce functionality using Django.
+
+Although the payment module is simulated, the application's modular architecture provides a solid foundation for integrating production-ready payment gateways, cloud storage, and advanced marketplace features in future iterations.

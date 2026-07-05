@@ -1,0 +1,132 @@
+---
+title: "NewsSense AI — Real-Time News Sentiment Intelligence"
+date: "2025"
+summary: "An AI-powered news analytics pipeline that fetches live news, performs transformer-based sentiment analysis, and prepares insights for interactive Power BI dashboards."
+tags: ["Artificial Intelligence", "NLP", "Data Analytics", "Visualization"]
+stack: ["Python", "Transformers", "Hugging Face", "NewsAPI", "Pandas", "Matplotlib", "Power BI"]
+links:
+    github: "https://github.com/mellviin/AI-Driven-Sentiment-Analysis-and-Visualization-of-News-Data"
+---
+
+## Overview
+
+Understanding public sentiment from rapidly changing news articles can be difficult without automated analysis. This project builds an end-to-end AI pipeline that collects live news articles, analyzes their sentiment using transformer-based Natural Language Processing, and transforms the results into a structured dataset ready for business intelligence dashboards.
+
+Instead of manually reviewing dozens of articles, the system summarizes public opinion in real time, enabling faster insights into trending topics, industries, or events.
+
+---
+
+## The Challenge
+
+Thousands of news articles are published every day, making it difficult to quickly understand the overall sentiment surrounding a specific topic.
+
+The challenge was to answer a simple question:
+
+> **Can AI automatically summarize public sentiment from live news while generating business-ready analytics?**
+
+The objective was to create an automated workflow that integrates data collection, transformer-based sentiment analysis, visualization, and dashboard-ready reporting into a single pipeline.
+
+---
+
+## Design Approach
+
+The project was designed around three principles:
+
+- **Automation** — Fetch and process live news articles without manual intervention.
+- **AI-Powered Analysis** — Use transformer-based NLP models instead of traditional rule-based sentiment analysis.
+- **Business Intelligence Ready** — Produce structured datasets suitable for Power BI and other analytics platforms.
+
+---
+
+## Pipeline
+
+```text
+User Topic
+      ↓
+NewsAPI
+      ↓
+Fetch Live Articles
+      ↓
+Text Cleaning
+      ↓
+RoBERTa Sentiment Analysis
+      ↓
+Sentiment Classification
+      ↓
+Data Transformation
+      ↓
+Power BI Dashboard
+```
+
+---
+
+## Technical Implementation
+
+The application combines modern NLP techniques with data engineering to automate sentiment analysis.
+
+Core implementation includes:
+
+- Live news retrieval using NewsAPI
+- Data preprocessing and text normalization
+- Transformer-based sentiment classification using Hugging Face RoBERTa
+- Sentiment scoring (Positive, Neutral, Negative)
+- Automated CSV generation
+- Data transformation for Power BI
+- Statistical visualization using Matplotlib
+- Structured reporting pipeline
+
+---
+
+## Engineering Challenges
+
+### Live Data Collection
+
+News data arrives with inconsistent formats, missing fields, and varying article structures. The pipeline performs validation and cleaning before analysis to ensure consistent processing.
+
+### Transformer Inference
+
+Running transformer models on multiple news articles required balancing inference speed with prediction accuracy while handling variable-length text inputs.
+
+### Data Preparation
+
+Raw API responses are unsuitable for analytics. The project transforms publication timestamps, normalizes sentiment labels, assigns numerical sentiment scores, and restructures the dataset into a format optimized for Power BI.
+
+### Business Intelligence Integration
+
+Rather than stopping at prediction, the pipeline prepares analytics-ready data, enabling interactive dashboards, trend monitoring, and executive reporting.
+
+---
+
+## Key Features
+
+- Live news collection using NewsAPI
+- Transformer-based sentiment analysis (RoBERTa)
+- Automatic text preprocessing
+- Positive, Neutral, and Negative classification
+- Numerical sentiment scoring
+- Automated CSV generation
+- Power BI-ready data transformation
+- Statistical sentiment visualization
+- Topic-based analysis
+- End-to-end automated pipeline
+
+---
+
+## What I Learned
+
+Building this project strengthened my understanding of:
+
+- Transformer-based Natural Language Processing
+- Hugging Face pipelines
+- Data engineering workflows
+- REST API integration
+- Data preprocessing techniques
+- Business intelligence pipelines
+- Pandas-based data transformation
+- Real-time analytics systems
+
+---
+
+## Outcome
+
+The project successfully demonstrates how modern AI models can automate news intelligence by transforming unstructured articles into meaningful business insights. By combining live data collection, transformer-based sentiment analysis, and business intelligence integration, the system provides a scalable foundation for monitoring public opinion, market trends, and media sentiment in real time.

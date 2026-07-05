@@ -1,6 +1,6 @@
 import { ResumeViewer } from "@/components/resume/ResumeViewer";
 
-const pdfUrl = "/resume.pdf";
+const pdfUrl = "/Melvin V - Resume.pdf";
 
 export default function ResumePage() {
   return (

@@ -1,0 +1,161 @@
+---
+title: "AutoDealer Hub — Full-Stack Dealership Review Platform"
+date: "2025"
+summary: "A distributed full-stack web application that enables users to browse dealerships, submit reviews, and analyze customer sentiment through a microservices architecture."
+tags: ["Full Stack", "Microservices", "Web Development", "Cloud"]
+stack: ["React", "Django", "Node.js", "Express", "MongoDB", "Flask", "Docker", "Kubernetes"]
+links:
+    github: "https://github.com/mellviin/AutoDealer-Hub-Full-Stack-Dealership-Review-Platform"
+---
+
+## Overview
+
+AutoDealer Hub is a distributed full-stack web application that connects customers with automobile dealerships through an interactive review platform. Users can browse dealerships, explore vehicle inventory, write reviews, and view AI-powered sentiment analysis of customer feedback.
+
+Rather than building a traditional monolithic application, the project adopts a **microservices architecture**, separating authentication, dealership data, sentiment analysis, and frontend presentation into independent services.
+
+---
+
+## The Challenge
+
+Modern web applications often require multiple independent services working together rather than a single backend.
+
+The challenge was to answer:
+
+> **How can multiple technologies be integrated into a scalable platform while keeping services modular and maintainable?**
+
+The objective was to build an end-to-end dealership review system that demonstrates full-stack development, REST APIs, distributed services, authentication, and cloud deployment concepts.
+
+---
+
+## Design Approach
+
+The system was designed around four principles:
+
+- **Service Separation** — Authentication, dealership management, and sentiment analysis operate independently.
+- **Scalability** — Each service can be deployed and scaled separately.
+- **RESTful Communication** — Services communicate through lightweight HTTP APIs.
+- **Containerized Deployment** — Docker and Kubernetes simplify deployment across environments.
+
+---
+
+## System Architecture
+
+```text
+                    React Frontend
+                           │
+                           ▼
+                  Django Backend API
+                 ┌─────────┴─────────┐
+                 │                   │
+                 ▼                   ▼
+      Node.js + Express API     Flask NLP Service
+                 │                   │
+                 ▼                   │
+             MongoDB            NLTK Sentiment
+                 │
+                 ▼
+           Dealer & Review Data
+```
+
+---
+
+## User Workflow
+
+```text
+User Login
+      ↓
+Browse Dealerships
+      ↓
+Select Dealer
+      ↓
+View Reviews
+      ↓
+Write Review
+      ↓
+Review Stored in MongoDB
+      ↓
+Sentiment Analysis
+      ↓
+Updated Dealer Profile
+```
+
+---
+
+## Technical Implementation
+
+The project integrates multiple technologies into a cohesive distributed system.
+
+Core implementation includes:
+
+- React Single Page Application
+- Django authentication and REST endpoints
+- Node.js & Express dealership service
+- MongoDB for dealership and review storage
+- Flask sentiment-analysis microservice
+- NLTK-based review classification
+- SQLite for inventory and user models
+- Docker containerization
+- Kubernetes deployment configuration
+
+---
+
+## Engineering Challenges
+
+### Multi-Service Communication
+
+The application coordinates requests across Django, Node.js, Flask, and MongoDB while maintaining a seamless user experience.
+
+### Authentication
+
+Django manages user authentication and session handling while exposing secure endpoints for frontend interactions.
+
+### Distributed Data Flow
+
+Dealer information, customer reviews, and sentiment analysis originate from different services and are combined into a unified response before reaching the frontend.
+
+### Containerized Deployment
+
+Running multiple independent services required Docker-based environments and Kubernetes deployment manifests for orchestration.
+
+---
+
+## Key Features
+
+- Secure user authentication
+- Dealership search and filtering
+- Dealer profile pages
+- Customer review system
+- AI-powered sentiment analysis
+- Vehicle inventory management
+- RESTful APIs
+- Microservices architecture
+- MongoDB integration
+- Docker containerization
+- Kubernetes deployment support
+
+---
+
+## What I Learned
+
+Developing AutoDealer Hub strengthened my understanding of:
+
+- Full-stack application architecture
+- Django authentication
+- React frontend development
+- REST API design
+- Express.js services
+- MongoDB integration
+- Microservices communication
+- Docker containerization
+- Kubernetes deployment
+- Service orchestration
+- Distributed application design
+
+---
+
+## Outcome
+
+AutoDealer Hub demonstrates how modern web applications can be built using independent services that communicate through APIs while remaining scalable and maintainable. By combining React, Django, Node.js, MongoDB, Flask, Docker, and Kubernetes, the project provides hands-on experience with technologies commonly used in production-grade distributed systems.
+
+The project serves as a practical exploration of full-stack engineering, cloud-native deployment, and microservices architecture while showcasing the integration of AI-powered sentiment analysis into a real-world business workflow.

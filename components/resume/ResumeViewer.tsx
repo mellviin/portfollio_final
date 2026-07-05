@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const pdfUrl = "/resume.pdf";
+const pdfUrl = "/Melvin V - Resume.pdf";
 
 export function ResumeViewer() {
   const [isClient, setIsClient] = useState(false);
