@@ -1,48 +1,88 @@
 :root {
-  --color-bg: #fafaf9;
-  --color-bg-elevated: #f5f5f4;
-  --color-text: #111113;
-  --color-text-muted: #52525b;
-  --color-accent: #2f4fd6;
-  --color-accent-strong: #2440b1;
-  --color-border: #e7e5e4;
-  --font-display: "Söhne", "Inter", "Segoe UI", Arial, sans-serif;
-  --font-body: "Inter", "Segoe UI", Arial, sans-serif;
-  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #101014;
-    --color-bg-elevated: #18181b;
-    --color-text: #e4e4e7;
-    --color-text-muted: #a1a1aa;
-    --color-border: #27272a;
-  }
+  /* Colors - Luxury Monochrome */
+  --color-bg: #030303;
+  --color-bg-elevated: rgba(255, 255, 255, 0.05);
+  --color-text: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.82);
+  --color-text-tertiary: rgba(255, 255, 255, 0.60);
+  --color-text-muted: rgba(255, 255, 255, 0.45);
+  --color-accent: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-card: rgba(255, 255, 255, 0.05);
+  
+  /* Fonts */
+  --font-cabinet: var(--font-cabinet, system-ui, sans-serif);
+  --font-geist: var(--font-geist, system-ui, sans-serif);
+  --font-mono: var(--font-mono, monospace);
+  
+  /* Typography Scale */
+  --text-hero: 72px;
+  --text-hero-tablet: 56px;
+  --text-hero-mobile: 42px;
+  --text-h1: 42px;
+  --text-h2: 32px;
+  --text-h3: 26px;
+  --text-h4: 22px;
+  --text-body: 18px;
+  --text-body-sm: 16px;
+  --text-label: 15px;
+  --text-caption: 14px;
+  --text-xs: 13px;
+  
+  /* Line Heights */
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.8;
+  
+  /* Letter Spacing */
+  --ls-tight: -0.04em;
+  --ls-tighter: -0.03em;
+  --ls-tight-sm: -0.02em;
+  --ls-normal: 0;
+  --ls-wide: 0.02em;
+  --ls-wider: 0.04em;
+  
+  /* Spacing - 8px System */
+  --sp-0: 0;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 28px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
 }
 
 html {
-  color-scheme: light;
-}
-
-html.dark {
   color-scheme: dark;
+  background-color: #030303;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-body);
+  font-family: var(--font-geist);
+  line-height: var(--lh-relaxed);
 }
 
+/* Typography Styles */
 h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 strong,
 b {
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-family: var(--font-cabinet);
+  font-weight: 700;
 }
 
 code,

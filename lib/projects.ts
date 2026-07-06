@@ -15,6 +15,7 @@ export type ProjectEntry = {
     demo?: string;
     github?: string;
   };
+  screenshots?: Array<{ src: string; alt?: string }>;
   source: string;
 };
 
@@ -36,6 +37,7 @@ export async function getAllProjectEntries(): Promise<ProjectEntry[]> {
         summary: data.summary as string,
         stack: (data.stack as string[]) ?? [],
         links: (data.links as ProjectEntry["links"]) ?? {},
+        screenshots: (data.screenshots as Array<{ src: string; alt?: string }> | undefined) ?? undefined,
         source: content,
       };
     }),

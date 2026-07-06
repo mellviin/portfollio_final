@@ -20,8 +20,8 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "GitHub", href: "https://github.com/mellviin" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/mellviin-v/" },
   { label: "Email", href: "mailto:melvinvenk707@gmail.com" },
 ];
 
@@ -65,40 +65,43 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 border-b border-transparent bg-[var(--color-bg)]/90 backdrop-blur-sm transition-all duration-300 ease-out ${
-          showNav || reduceMotion || pathname !== "/" ? "border-[var(--color-border)] opacity-100" : "pointer-events-none opacity-0"
+        className={`sticky top-0 z-50 border-b border-transparent backdrop-blur-xl transition-all duration-300 ease-out ${
+          showNav || reduceMotion || pathname !== "/"
+            ? "border-[var(--color-border)] bg-black/40 opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8 lg:px-10">
-          <Link href="/" className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text)]">
+          <Link href="/" className="label text-white">
             MEL
           </Link>
-          <nav aria-label="Primary" className="flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-muted)]">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="transition-colors duration-200 hover:text-[var(--color-accent)]"
-              >
-                {item.label}
-              </Link>
-            ))}
+          <nav aria-label="Primary" className="flex flex-wrap items-center gap-4 nav-text text-white/75">
+            {navItems.map((item) => {
+              const active = pathname === item.href;
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`rounded-full px-4 py-2 transition-all duration-200 ${
+                    active ? "bg-white/10 text-white" : "hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <CommandPalette />
           </nav>
         </div>
       </header>
 
-      <div id="top">{children}</div>
+      <div id="top" className="relative z-20">{children}</div>
 
-      <footer className="mx-auto flex w-full max-w-6xl flex-col gap-4 border-t border-[var(--color-border)] px-6 py-8 text-sm text-[var(--color-text-muted)] sm:px-8 lg:px-10">
+      <footer className="relative z-20 mx-auto flex w-full max-w-6xl flex-col gap-6 border-t border-white/10 px-6 py-12 caption text-white/70 sm:px-8 lg:px-10">
         <p>© 2026 Mel. All rights reserved.</p>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-6">
           {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="transition-colors duration-200 hover:text-[var(--color-accent)]"
-            >
+            <a key={link.label} href={link.href} className="transition-colors duration-200 hover:text-white/90">
               {link.label}
             </a>
           ))}

@@ -17,8 +17,8 @@ export default async function LogEntryPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-8 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
-      <Link href="/log" className="text-sm font-semibold text-[var(--color-accent)]">
+    <main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-12 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <Link href="/log" className="button-text text-white/90 hover:text-white">
         ← Back to build log
       </Link>
 

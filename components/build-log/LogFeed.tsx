@@ -21,16 +21,16 @@ export function LogFeed({ initialEntries, initialTags }: LogFeedProps) {
   }, [initialEntries, selectedTag]);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap gap-2">
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-wrap gap-3">
         <button
           type="button"
           onClick={() => setSelectedTag(null)}
           aria-pressed={selectedTag === null}
-          className={`rounded-full border px-3 py-1.5 text-sm transition-colors duration-200 ${
+          className={`rounded-full border px-4 py-2 label transition-colors duration-200 ${
             selectedTag === null
-              ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-white"
-              : "border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              ? "border-white/40 bg-white/10 text-white"
+              : "border-white/20 text-white/70 hover:border-white/35 hover:bg-white/10 hover:text-white/85"
           }`}
         >
           All
@@ -43,10 +43,10 @@ export function LogFeed({ initialEntries, initialTags }: LogFeedProps) {
               type="button"
               onClick={() => setSelectedTag(tag)}
               aria-pressed={isActive}
-              className={`rounded-full border px-3 py-1.5 text-sm transition-colors duration-200 ${
+              className={`rounded-full border px-4 py-2 label transition-colors duration-200 ${
                 isActive
-                  ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-white"
-                  : "border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                  ? "border-white/40 bg-white/10 text-white"
+                  : "border-white/20 text-white/70 hover:border-white/35 hover:bg-white/10 hover:text-white/85"
               }`}
             >
               {tag}
@@ -55,7 +55,7 @@ export function LogFeed({ initialEntries, initialTags }: LogFeedProps) {
         })}
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6">
         {visibleEntries.map((entry) => (
           <LogEntryCard
             key={entry.slug}

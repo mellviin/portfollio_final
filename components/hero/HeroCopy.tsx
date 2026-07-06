@@ -39,9 +39,9 @@ export function HeroCopy({ headline, subline }: HeroCopyProps) {
   }, []);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h1
-        className={`max-w-[10ch] text-5xl font-semibold leading-[0.82] tracking-[-0.05em] text-[var(--color-text)] transition-opacity duration-400 ease-out motion-reduce:transition-none motion-reduce:duration-0 sm:text-7xl lg:text-[7rem] xl:text-[8.25rem] ${
+        className={`max-w-[10ch] display transition-opacity duration-400 ease-out motion-reduce:transition-none motion-reduce:duration-0 ${
           showHeadline || reduceMotion ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -49,7 +49,7 @@ export function HeroCopy({ headline, subline }: HeroCopyProps) {
       </h1>
 
       <p
-        className={`max-w-2xl text-lg leading-8 text-[var(--color-text-muted)] transition-opacity duration-400 ease-out motion-reduce:transition-none motion-reduce:duration-0 sm:text-xl ${
+        className={`max-w-2xl tagline transition-opacity duration-400 ease-out motion-reduce:transition-none motion-reduce:duration-0 ${
           showSubline || reduceMotion ? "opacity-100" : "opacity-0"
         }`}
       >

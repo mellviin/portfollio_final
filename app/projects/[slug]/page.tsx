@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProjectEntryBySlug } from "@/lib/projects";
 import { getLogEntriesForProject } from "@/lib/log";
@@ -21,25 +22,40 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const relatedEntries = await getLogEntriesForProject(slug);
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-8 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
-      <Link href="/projects" className="text-sm font-semibold text-[var(--color-accent)]">
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-12 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <Link href="/projects" className="button-text text-white/90 hover:text-white">
         ← Back to projects
       </Link>
 
-      <section className="space-y-4">
-        <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Case study</p>
-        <h1 className="text-4xl font-semibold tracking-[-0.03em] text-[var(--color-text)] sm:text-5xl">
+      <section className="space-y-6">
+        <p className="label text-white/70">Case study</p>
+        <h1 className="heading">
           {project.title}
         </h1>
-        <p className="max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{project.summary}</p>
+        <p className="body-sm max-w-3xl">{project.summary}</p>
       </section>
 
-      <section className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-        <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Embedded demo</p>
-        <div className="mt-4 min-h-72 rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-bg)] p-8 text-sm text-[var(--color-text-muted)]">
-          {/* TODO: Replace with screenshot or embedded demo embed. */}
-          No screenshot available.
-        </div>
+      <section className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-8">
+        <p className="label text-white/70">Screenshots</p>
+        {project.screenshots && project.screenshots.length > 0 ? (
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {project.screenshots.map((image, index) => (
+              <div key={`${image.src}-${index}`} className="overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)]">
+                <Image
+                  src={image.src}
+                  alt={image.alt ?? `${project.title} screenshot ${index + 1}`}
+                  width={1400}
+                  height={900}
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-4 min-h-72 rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-bg)] p-8 text-sm text-[var(--color-text-muted)]">
+            No screenshots available.
+          </div>
+        )}
       </section>
 
       <section className="space-y-4">

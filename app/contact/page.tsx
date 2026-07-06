@@ -51,31 +51,29 @@ export default function ContactPage() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
       <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div className="space-y-6">
-          <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Contact</p>
-          <h1 className="text-4xl font-semibold tracking-[-0.03em] text-[var(--color-text)] sm:text-5xl">
-            Let&apos;s talk product, systems, and thoughtful delivery.
-          </h1>
-          <p className="max-w-2xl text-lg leading-8 text-[var(--color-text-muted)]">
+        <div className="space-y-8 rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
+          <p className="label text-white/70">Contact</p>
+          <h1 className="heading">Let&apos;s talk product, systems, and thoughtful delivery.</h1>
+          <p className="body-sm max-w-2xl">
             I&apos;m currently exploring roles where I can help teams ship reliable product experiences with a strong technical foundation.
           </p>
-          <div className="flex flex-wrap gap-4 text-sm">
-            <a href="mailto:melvinvenk707@gmail.com" className="rounded-full border border-[var(--color-border)] px-4 py-2 transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]">
+          <div className="flex flex-wrap gap-5 label">
+            <a href="mailto:melvinvenk707@gmail.com" className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-white/90 transition-all duration-200 hover:bg-white/10 hover:text-white hover:border-white/40">
               melvinvenk707@gmail.com
             </a>
-            <a href="tel:+917022224871" className="rounded-full border border-[var(--color-border)] px-4 py-2 transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]">
+            <a href="tel:+917022224871" className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-white/90 transition-all duration-200 hover:bg-white/10 hover:text-white hover:border-white/40">
               +91 7022224871
             </a>
-            <span className="rounded-full border border-[var(--color-border)] px-4 py-2 text-[var(--color-text-muted)]">
+            <span className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-white/60">
               Bangalore, Karnataka, India
             </span>
-            <Link href="/resume" className="rounded-full border border-[var(--color-border)] px-4 py-2 transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]">
+            <Link href="/resume" className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-white/90 transition-all duration-200 hover:bg-white/10 hover:text-white hover:border-white/40">
               View résumé
             </Link>
           </div>
         </div>
 
-        <div className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 shadow-[0_1px_0_rgba(255,255,255,0.02)]">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.22)]">
           <Image
             src="/contact-illustration.svg"
             alt="TODO: Add descriptive alt text for the contact illustration"
@@ -87,30 +85,30 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="space-y-3">
-          <h2 className="text-2xl font-semibold text-[var(--color-text)]">Send a message</h2>
-          <p className="text-[var(--color-text-muted)]">
+      <section className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="space-y-4">
+          <h2 className="heading-3">Send a message</h2>
+          <p className="body-sm muted">
             Share a brief note and I&apos;ll follow up when I can.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5 rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-          <div className="grid gap-5 sm:grid-cols-2">
-            <label className="flex flex-col gap-2 text-sm text-[var(--color-text-muted)]">
-              <span className="text-[var(--color-text)]">Name</span>
+        <form onSubmit={handleSubmit} className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-2xl">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <label className="flex flex-col gap-3">
+              <span className="label text-white">Name</span>
               <input
                 required
                 name="name"
                 type="text"
                 value={form.name}
                 onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
-                className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-3 text-[var(--color-text)] outline-none"
+                className="rounded-2xl border border-white/20 bg-black/40 px-5 py-3 body-sm text-white outline-none placeholder:text-white/50 transition-all focus:border-white/40 focus:bg-black/50"
                 placeholder="Your name"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm text-[var(--color-text-muted)]">
-              <span className="text-[var(--color-text)]">Email</span>
+            <label className="flex flex-col gap-3">
+              <span className="label text-white">Email</span>
               <input
                 required
                 name="email"
@@ -118,36 +116,36 @@ export default function ContactPage() {
                 autoComplete="email"
                 value={form.email}
                 onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
-                className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-3 text-[var(--color-text)] outline-none"
+                className="rounded-2xl border border-white/20 bg-black/40 px-5 py-3 body-sm text-white outline-none placeholder:text-white/50 transition-all focus:border-white/40 focus:bg-black/50"
                 placeholder="you@example.com"
               />
             </label>
           </div>
 
-          <label className="flex flex-col gap-2 text-sm text-[var(--color-text-muted)]">
-            <span className="text-[var(--color-text)]">Message</span>
+          <label className="flex flex-col gap-3">
+            <span className="label text-white">Message</span>
             <textarea
               required
               name="message"
               rows={6}
               value={form.message}
               onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
-              className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-3 text-[var(--color-text)] outline-none"
+              className="rounded-2xl border border-white/20 bg-black/40 px-5 py-3 body-sm text-white outline-none placeholder:text-white/50 transition-all focus:border-white/40 focus:bg-black/50"
               placeholder="Tell me what you’re building..."
             />
           </label>
 
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-between gap-6 pt-2">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-full bg-[var(--color-accent)] px-5 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-accent-strong)] disabled:cursor-not-allowed disabled:opacity-70"
+              className="button-text rounded-full border border-white/30 bg-white/5 px-6 py-3 text-white transition-all duration-200 hover:bg-white/10 hover:border-white/50 disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isSubmitting ? "Sending…" : "Send message"}
             </button>
 
             {status !== "idle" ? (
-              <p className={`text-sm ${status === "success" ? "text-[var(--color-accent)]" : "text-[var(--color-text-muted)]"}`}>
+              <p className={`body-sm ${status === "success" ? "text-white" : "muted"}`}>
                 {feedback}
               </p>
             ) : null}

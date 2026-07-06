@@ -2,7 +2,7 @@ import { unstable_cache } from "next/cache";
 
 const getGithubStats = unstable_cache(
   async () => {
-    const response = await fetch("https://api.github.com/users/octocat", {
+    const response = await fetch("https://api.github.com/users/mellviin", {
       headers: { Accept: "application/vnd.github+json" },
       next: { revalidate: 3600 },
     });
@@ -77,37 +77,33 @@ export default async function SkillsPage() {
   const stats = await getGithubStats();
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-10 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
-      <section className="space-y-4">
-        <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Skills</p>
-        <h1 className="text-4xl font-semibold tracking-[-0.03em] text-[var(--color-text)] sm:text-5xl">
-          A compact map of the stack I work with.
-        </h1>
-        <p className="max-w-2xl text-lg leading-8 text-[var(--color-text-muted)]">
+    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
+        <p className="label text-white/70">Skills</p>
+        <h1 className="heading">A compact map of the stack I work with.</h1>
+        <p className="body-sm max-w-2xl">
           Organized for scanning: the systems, tools, and product contexts I can operate in without needing a long ramp-up.
         </p>
       </section>
 
-      <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 text-sm text-[var(--color-text-muted)]">
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-2xl">
         {stats ? (
-          <p>
-            GitHub: {stats.publicRepos} public repos · {stats.publicGists} public gists
+          <p className="caption">
+            GitHub: <span className="text-white">{stats.publicRepos}</span> public repos · <span className="text-white">{stats.publicGists}</span> public gists
           </p>
         ) : (
-          <p>GitHub stats unavailable at the moment.</p>
+          <p className="caption">GitHub stats unavailable at the moment.</p>
         )}
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2">
         {skillGroups.map((group) => (
-          <section key={group.category} className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6">
-            <h2 className="text-lg font-semibold uppercase tracking-[0.24em] text-[var(--color-text)]">
-              {group.category}
-            </h2>
-            <ul className="mt-4 space-y-3 text-sm leading-7 text-[var(--color-text-muted)]">
+          <section key={group.category} className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-2xl">
+            <h2 className="label text-white">{group.category}</h2>
+            <ul className="mt-6 space-y-4 text-body-sm">
               {group.items.map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+                <li key={item} className="flex items-center gap-4">
+                  <span className="h-2 w-2 rounded-full bg-white/80 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}

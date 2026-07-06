@@ -19,15 +19,15 @@ export function LogEntryCard({ slug, title, date, tags, summary, source, initial
   const [expanded, setExpanded] = useState(initialExpanded);
 
   const preview = (
-    <div className="space-y-4">
-      <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h3 className="text-xl font-semibold text-[var(--color-text)]">{title}</h3>
-        <time className="text-sm text-[var(--color-text-muted)]">{date}</time>
+    <div className="space-y-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-4">
+        <h3 className="heading-4">{title}</h3>
+        <time className="caption">{date}</time>
       </div>
-      <p className="text-sm leading-7 text-[var(--color-text-muted)]">{summary}</p>
-      <div className="flex flex-wrap gap-2">
+      <p className="body-sm">{summary}</p>
+      <div className="flex flex-wrap gap-3">
         {tags.map((tag) => (
-          <span key={tag} className="rounded-full border border-[var(--color-border)] px-3 py-1 text-xs uppercase tracking-[0.24em] text-[var(--color-text-muted)]">
+          <span key={tag} className="rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.12em] text-white/75 bg-white/5">
             {tag}
           </span>
         ))}
@@ -36,7 +36,7 @@ export function LogEntryCard({ slug, title, date, tags, summary, source, initial
   );
 
   return (
-    <article className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-6 shadow-[0_1px_0_rgba(255,255,255,0.02)]">
+    <article className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_20px_80px_rgba(0,0,0,0.22)] backdrop-blur-2xl">
       <button
         type="button"
         onClick={() => setExpanded((current) => !current)}
@@ -60,7 +60,7 @@ export function LogEntryCard({ slug, title, date, tags, summary, source, initial
           >
             <div className="mt-6 space-y-4 border-t border-[var(--color-border)] pt-6">
               <LogBody source={source} />
-              <Link href={`/log/${slug}`} className="inline-flex text-sm font-semibold text-[var(--color-accent)]">
+              <Link href={`/log/${slug}`} className="inline-flex text-sm font-semibold text-white/85 transition-colors duration-200 hover:text-white">
                 Open standalone entry →
               </Link>
             </div>

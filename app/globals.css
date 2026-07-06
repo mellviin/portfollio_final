@@ -9,8 +9,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display);
+  --font-sans: var(--font-geist);
+  --font-cabinet: var(--font-cabinet);
   --font-mono: var(--font-mono);
 }
 
@@ -23,7 +23,8 @@ body {
   min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: var(--font-geist);
+  line-height: var(--lh-relaxed);
 }
 
 * {
@@ -41,7 +42,7 @@ input,
 textarea,
 select,
 [role="button"] {
-  transition: box-shadow 160ms ease, outline-color 160ms ease, border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+  transition: box-shadow 160ms ease, outline-color 160ms ease, border-color 160ms ease, color 160ms ease, background-color 160ms ease, opacity 160ms ease;
 }
 
 button:focus-visible,
@@ -53,4 +54,177 @@ select:focus-visible,
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 22%, transparent);
+}
+
+/* Typography Utility Classes */
+
+/* Display - Hero Heading */
+.display {
+  font-family: var(--font-cabinet);
+  font-size: var(--text-hero);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .display {
+    font-size: var(--text-hero-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .display {
+    font-size: var(--text-hero-mobile);
+  }
+}
+
+/* Heading 1 - Section Titles */
+.heading {
+  font-family: var(--font-cabinet);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tighter);
+  color: var(--color-text);
+}
+
+/* Heading 2 */
+.heading-2 {
+  font-family: var(--font-cabinet);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tighter);
+  color: var(--color-text);
+}
+
+/* Heading 3 - Project Titles */
+.heading-3 {
+  font-family: var(--font-cabinet);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight-sm);
+  color: var(--color-text);
+}
+
+/* Heading 4 - Card Headings */
+.heading-4 {
+  font-family: var(--font-cabinet);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight-sm);
+  color: var(--color-text);
+}
+
+/* Subheading */
+.subheading {
+  font-family: var(--font-cabinet);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Body Text */
+.body {
+  font-family: var(--font-geist);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text-secondary);
+}
+
+/* Body Small */
+.body-sm {
+  font-family: var(--font-geist);
+  font-size: var(--text-body-sm);
+  font-weight: 400;
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text-tertiary);
+}
+
+/* Label - Navigation, Buttons */
+.label {
+  font-family: var(--font-geist);
+  font-size: var(--text-label);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+/* Caption - Small Text */
+.caption {
+  font-family: var(--font-geist);
+  font-size: var(--text-caption);
+  font-weight: 400;
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text-muted);
+}
+
+/* Extra Small */
+.text-xs {
+  font-family: var(--font-geist);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text-muted);
+}
+
+/* Navigation Text */
+.nav-text {
+  font-family: var(--font-geist);
+  font-size: var(--text-label);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-secondary);
+}
+
+/* Button Text */
+.button-text {
+  font-family: var(--font-geist);
+  font-size: var(--text-label);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text);
+}
+
+/* Tagline */
+.tagline {
+  font-family: var(--font-geist);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-text-secondary);
+}
+
+/* Muted Text */
+.muted {
+  color: var(--color-text-muted);
+}
+
+.muted-secondary {
+  color: var(--color-text-tertiary);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

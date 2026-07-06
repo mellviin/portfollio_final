@@ -24,28 +24,26 @@ const experiences = [
 
 export default function ExperiencePage() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-10 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
-      <section className="space-y-4">
-        <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Experience</p>
-        <h1 className="text-4xl font-semibold tracking-[-0.03em] text-[var(--color-text)] sm:text-5xl">
-          A short, readable record of the roles I’ve held.
-        </h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
+        <p className="label text-white/70">Experience</p>
+        <h1 className="heading">A short, readable record of the roles I've held.</h1>
       </section>
 
-      <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)]">
-        <div className="grid grid-cols-[1.2fr_0.8fr_0.6fr] gap-4 border-b border-[var(--color-border)] bg-[var(--color-bg)] px-6 py-4 text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-text-muted)]">
+      <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl">
+        <div className="grid grid-cols-[1.2fr_0.8fr_0.6fr] gap-4 border-b border-white/10 bg-black/20 px-8 py-5 label text-white/70">
           <span>Role</span>
           <span>Company</span>
           <span>Dates</span>
         </div>
         {experiences.map((item) => (
-          <div key={`${item.role}-${item.company}`} className="grid grid-cols-[1.2fr_0.8fr_0.6fr] gap-4 border-b border-[var(--color-border)] px-6 py-5 last:border-b-0">
+          <div key={`${item.role}-${item.company}`} className="grid grid-cols-[1.2fr_0.8fr_0.6fr] gap-4 border-b border-white/10 px-8 py-6 last:border-b-0">
             <div>
-              <p className="font-semibold text-[var(--color-text)]">{item.role}</p>
-              <p className="mt-2 text-sm leading-7 text-[var(--color-text-muted)]">{item.impact}</p>
+              <p className="heading-4">{item.role}</p>
+              <p className="body-sm mt-3">{item.impact}</p>
             </div>
-            <p className="text-sm text-[var(--color-text-muted)]">{item.company}</p>
-            <p className="text-sm text-[var(--color-text-muted)]">{item.dates}</p>
+            <p className="body-sm">{item.company}</p>
+            <p className="body-sm">{item.dates}</p>
           </div>
         ))}
       </div>

@@ -195,10 +195,10 @@ export function CommandPalette() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-accent)]"
+        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-sm text-white/75 transition-colors duration-200 hover:bg-white/20 hover:text-white"
         aria-label="Open command palette"
       >
-        <span className="font-medium text-[var(--color-text)]">⌘K</span>
+        <span className="font-medium text-white">⌘K</span>
         <span className="hidden sm:inline">Search</span>
       </button>
 
@@ -209,7 +209,7 @@ export function CommandPalette() {
             animate={{ opacity: 1 }}
             exit={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
             transition={reduceMotion ? { duration: 0 } : { duration: 0.15 }}
-            className="fixed inset-0 z-[100] flex items-start justify-center bg-[color:rgba(0,0,0,0.35)] px-4 py-16 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-start justify-center bg-black/55 px-4 py-16 backdrop-blur-xl"
             onClick={() => setOpen(false)}
           >
             <motion.div
@@ -219,14 +219,14 @@ export function CommandPalette() {
               exit={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
               transition={reduceMotion ? { duration: 0 } : { duration: 0.15 }}
               onClick={(event) => event.stopPropagation()}
-              className="w-full max-w-xl overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] shadow-[0_20px_80px_rgba(0,0,0,0.18)]"
+              className="w-full max-w-xl overflow-hidden rounded-3xl border border-white/10 bg-black/80 shadow-[0_20px_80px_rgba(0,0,0,0.32)]"
               role="dialog"
               aria-modal="true"
               aria-label="Command palette"
             >
               <div className="flex flex-col">
-                <div className="flex items-center gap-3 border-b border-[var(--color-border)] px-4 py-3">
-                  <span className="text-sm text-[var(--color-text-muted)]">⌕</span>
+                <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
+                  <span className="text-sm text-white/70">⌕</span>
                   <input
                     ref={inputRef}
                     value={query}
@@ -238,13 +238,13 @@ export function CommandPalette() {
                     aria-autocomplete="list"
                     aria-activedescendant={activeItemId}
                     placeholder="Jump to projects, log entries, or pages"
-                    className="w-full border-0 bg-transparent text-sm text-[var(--color-text)] outline-none placeholder:text-[var(--color-text-muted)]"
+                    className="w-full border-0 bg-transparent text-sm text-white outline-none placeholder:text-white/45"
                   />
                 </div>
 
                 <div id="command-palette-listbox" role="listbox" className="max-h-[340px] overflow-y-auto px-2 py-2">
                   {!filteredItems.length ? (
-                    <div className="px-4 py-6 text-sm text-[var(--color-text-muted)]">No matches yet.</div>
+                    <div className="px-4 py-6 text-sm text-white/70">No matches yet.</div>
                   ) : null}
 
                   {filteredItems.map((item, index) => {
@@ -263,14 +263,14 @@ export function CommandPalette() {
                         onMouseDown={(event) => event.preventDefault()}
                         onClick={() => handleItemClick(item, index)}
                         className={`flex cursor-pointer items-start justify-between rounded-xl px-3 py-3 text-left transition-colors duration-150 ${
-                          isSelected ? "bg-[var(--color-bg-elevated)]" : isHovered ? "bg-[var(--color-bg-elevated)]/80" : ""
+                          isSelected ? "bg-white/10" : isHovered ? "bg-white/5" : ""
                         }`}
                       >
                         <span className="flex flex-col gap-1">
-                          <span className="text-sm font-medium text-[var(--color-text)]">{item.title}</span>
-                          <span className="text-sm text-[var(--color-text-muted)]">{item.subtitle}</span>
+                          <span className="text-sm font-medium text-white">{item.title}</span>
+                          <span className="text-sm text-white/70">{item.subtitle}</span>
                         </span>
-                        <span className="rounded-full border border-[var(--color-border)] px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+                        <span className="rounded-full border border-white/15 px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-white/70">
                           {item.category}
                         </span>
                       </div>
