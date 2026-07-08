@@ -7,7 +7,7 @@ export default function Home() {
       <section className="flex min-h-[78vh] flex-col justify-center gap-12 pt-8">
         <HeroCopy
           headline="Melvin V."
-          subline="Software Developer building full-stack, AI-powered, and distributed systems — from resume-parsing NLP pipelines to a search engine built from scratch."
+          subline="Started as a 3D artist. Now I build the kind of software I used to think only Google could — semantic search, NLP pipelines, full systems from scratch. Same obsession with making things feel right, different medium."
         />
 
         <div className="flex flex-wrap items-center gap-8">

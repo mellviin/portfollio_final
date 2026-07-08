@@ -8,7 +8,7 @@ export default function ResumePage() {
       <section className="flex flex-wrap items-end justify-between gap-8 rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
         <div className="space-y-4">
           <p className="label text-white/70">Resume</p>
-          <h1 className="heading">A fast, readable résumé view.</h1>
+          <h1 className="heading">The résumé, rendered right.</h1>
         </div>
         <a
           href={pdfUrl}

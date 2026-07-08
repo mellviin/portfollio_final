@@ -10,11 +10,6 @@
   --color-border: rgba(255, 255, 255, 0.12);
   --color-card: rgba(255, 255, 255, 0.05);
   
-  /* Fonts */
-  --font-cabinet: var(--font-cabinet, system-ui, sans-serif);
-  --font-geist: var(--font-geist, system-ui, sans-serif);
-  --font-mono: var(--font-mono, monospace);
-  
   /* Typography Scale */
   --text-hero: 72px;
   --text-hero-tablet: 56px;
@@ -25,9 +20,9 @@
   --text-h4: 22px;
   --text-body: 18px;
   --text-body-sm: 16px;
-  --text-label: 15px;
-  --text-caption: 14px;
-  --text-xs: 13px;
+  --text-label: 12px;
+  --text-caption: 13px;
+  --text-xs: 12px;
   
   /* Line Heights */
   --lh-tight: 1.05;
@@ -68,11 +63,10 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-geist);
+  font-family: var(--font-body);
   line-height: var(--lh-relaxed);
 }
 
-/* Typography Styles */
 h1,
 h2,
 h3,
@@ -81,12 +75,12 @@ h5,
 h6,
 strong,
 b {
-  font-family: var(--font-cabinet);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 400;
 }
 
 code,
 pre,
 samp {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
 }
