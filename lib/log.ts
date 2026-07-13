@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { cache } from "react";
 
 const logDirectory = path.join(process.cwd(), "content/log");
 
@@ -13,7 +14,7 @@ export type LogEntry = {
   source: string;
 };
 
-export async function getAllLogEntries(): Promise<LogEntry[]> {
+export const getAllLogEntries = cache(async (): Promise<LogEntry[]> => {
   const fileNames = fs.readdirSync(logDirectory).filter((fileName) => fileName.endsWith(".mdx"));
 
   const entries = await Promise.all(
@@ -35,20 +36,20 @@ export async function getAllLogEntries(): Promise<LogEntry[]> {
   );
 
   return entries.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
+});
 
-export async function getLogEntryBySlug(slug: string): Promise<LogEntry | null> {
+export const getLogEntryBySlug = cache(async (slug: string): Promise<LogEntry | null> => {
   const entries = await getAllLogEntries();
   return entries.find((entry) => entry.slug === slug) ?? null;
-}
+});
 
-export async function getAllLogTags(): Promise<string[]> {
+export const getAllLogTags = cache(async (): Promise<string[]> => {
   const entries = await getAllLogEntries();
   const tags = entries.flatMap((entry) => entry.tags);
   return Array.from(new Set(tags)).sort();
-}
+});
 
-export async function getLogEntriesForProject(projectSlug: string): Promise<LogEntry[]> {
+export const getLogEntriesForProject = cache(async (projectSlug: string): Promise<LogEntry[]> => {
   const entries = await getAllLogEntries();
   return entries.filter((entry) => entry.tags.includes(projectSlug));
-}
+});

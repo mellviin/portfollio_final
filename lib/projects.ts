@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { cache } from "react";
 
 const projectsDirectory = path.join(process.cwd(), "content/projects");
 
-function toSlug(value: string): string {
+export function getProjectSlug(value: string): string {
   return value
     .toLowerCase()
     .normalize("NFKD")
@@ -13,8 +14,16 @@ function toSlug(value: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
+function getProjectSlugCandidates(fileName: string): string[] {
+  const baseName = fileName.replace(/\.mdx$/, "");
+  const normalizedSlug = getProjectSlug(baseName);
+
+  return [normalizedSlug, baseName].filter((slug, index, values) => slug && values.indexOf(slug) === index);
+}
+
 export type ProjectEntry = {
   slug: string;
+  legacySlug?: string;
   title: string;
   date: string;
   tags: string[];
@@ -28,7 +37,7 @@ export type ProjectEntry = {
   source: string;
 };
 
-export async function getAllProjectEntries(): Promise<ProjectEntry[]> {
+export const getAllProjectEntries = cache(async (): Promise<ProjectEntry[]> => {
   const fileNames = fs.readdirSync(projectsDirectory).filter((fileName) => fileName.endsWith(".mdx"));
 
   const entries = await Promise.all(
@@ -36,10 +45,11 @@ export async function getAllProjectEntries(): Promise<ProjectEntry[]> {
       const fullPath = path.join(projectsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
-      const slug = toSlug(fileName.replace(/\.mdx$/, ""));
+      const [slug, legacySlug] = getProjectSlugCandidates(fileName);
 
       return {
         slug,
+        legacySlug,
         title: data.title as string,
         date: data.date as string,
         tags: (data.tags as string[]) ?? [],
@@ -53,9 +63,9 @@ export async function getAllProjectEntries(): Promise<ProjectEntry[]> {
   );
 
   return entries.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
+});
 
-export async function getProjectEntryBySlug(slug: string): Promise<ProjectEntry | null> {
+export const getProjectEntryBySlug = cache(async (slug: string): Promise<ProjectEntry | null> => {
   const entries = await getAllProjectEntries();
-  return entries.find((entry) => entry.slug === slug) ?? null;
-}
+  return entries.find((entry) => entry.slug === slug || entry.legacySlug === slug) ?? null;
+});

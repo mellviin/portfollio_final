@@ -1,14 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getProjectEntryBySlug } from "@/lib/projects";
+import { getProjectEntryBySlug, getAllProjectEntries } from "@/lib/projects";
 import { getLogEntriesForProject } from "@/lib/log";
 import { LogBody } from "@/components/build-log/LogBody";
 
 export async function generateStaticParams() {
-  const projects = await import("@/lib/projects").then((mod) => mod.getAllProjectEntries());
-  const entries = await projects;
-  return entries.map((entry) => ({ slug: entry.slug }));
+  const entries = await getAllProjectEntries();
+  return entries.flatMap((entry) => {
+    const slugs = [entry.slug, entry.legacySlug].filter((slug): slug is string => Boolean(slug));
+    return slugs.map((slug) => ({ slug }));
+  });
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {

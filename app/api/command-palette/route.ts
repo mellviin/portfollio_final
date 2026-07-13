@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { NextResponse } from "next/server";
+import { getProjectSlug } from "@/lib/projects";
 
 type PaletteItem = {
   id: string;
@@ -31,7 +32,7 @@ export async function GET() {
     const fullPath = path.join(projectDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data } = matter(fileContents);
-    const slug = fileName.replace(/\.mdx$/, "");
+    const slug = getProjectSlug(fileName.replace(/\.mdx$/, ""));
 
     return {
       id: `project-${slug}`,
